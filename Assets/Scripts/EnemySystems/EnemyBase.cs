@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-[RequireComponent(typeof(Rigidbody),typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent))]
 public abstract class EnemyBase : StateMachineBase,IEnemy
 {
-
-    protected Rigidbody rigidBody;
+    
     protected NavMeshAgent navMesh;
     protected PlayerHealthSystem targetPlayer;
     public float KillScore { get; set; }

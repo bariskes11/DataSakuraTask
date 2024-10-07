@@ -37,7 +37,7 @@ public class EnemyWalk : EnemyCore, IState
     {
         Transform target = FindClosestPosition(this.targetPosList);
         float distance = Vector3.Distance(this.stateManager.gameObject.transform.position, target.position);
-        if (distance <= this.properties.ShootRange)
+        if (distance < this.properties.ShootRange)
         {
             this.stateManager.ChangeState(this.stateManager.attackState);
             return;

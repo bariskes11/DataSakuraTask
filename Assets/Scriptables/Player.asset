@@ -16,6 +16,6 @@ MonoBehaviour:
   RotateSpeed: 100
   BulletSpeed: 10
   BulletDamage: 50
-  TimeOutPerShot: 2
+  TimeOutPerShot: 1.5
   MaxHealth: 200
   ProjectileIndex: 0

@@ -34,14 +34,5 @@ public abstract class BaseProjectile : MonoBehaviour
 
         this.transform.Translate(Vector3.forward * bulletMoveSpeed * Time.deltaTime);
     }
-
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        ReturnToPool();
-    }
-
-    protected virtual void ReturnToPool()
-    {
-        PoolManager.Instance.ReturnBaseProjectile(this, projectileIndex);
-    }
+    
 }

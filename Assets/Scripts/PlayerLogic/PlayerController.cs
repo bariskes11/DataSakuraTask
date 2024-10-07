@@ -136,4 +136,6 @@ public class PlayerController : MonoBehaviour
 
         ShotBullet();
     }
+
+    public PlayerProperties GetPlayerProperties() => this.playerProperties;
 }

@@ -14,6 +14,7 @@ public class EnemyStateManager : EnemyBase
     
     private void Awake()
     {
+        this.navMesh = this.GetComponent<NavMeshAgent>();
         if (navMesh is null)
         {
             Debug.LogError("No Navmesh set " + this.gameObject.name, this.gameObject);
@@ -25,7 +26,7 @@ public class EnemyStateManager : EnemyBase
 
         walkState = new EnemyWalk(this, enemyTypeProperties, playerTargetShotPositions, navMesh);
         attackState = new EnemyAttack(this, enemyTypeProperties, playerTargetShotPositions,
-            targetPlayer,this.bulletShotPoint);
+            targetPlayer,this.bulletShotPoint,this.bulletShotParticle);
         dieState = new EnemyDie();
         this.ChangeState(walkState);
     }
