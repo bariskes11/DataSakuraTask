@@ -12,7 +12,7 @@ public class EnemyProperties : ScriptableObject
     public float ShootRange;
     public float BulletMoveSpeed;
     public float BulletDamage;
-     
+    public float KillScore;
     public float TimeOutPerShot;
     public float MaxHealth;
     public int ProjectileIndex;

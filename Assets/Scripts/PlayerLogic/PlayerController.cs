@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float rotationMove;
     private Joystick joystick;
 
-    public bool IsControlEnabled { get; set; }
+    public bool IsControlEnabled { get;private set; }
     public static Action OnShotBullet;
     private bool isChargeFinished;
 
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         movement = transform.forward * moveZ;
         SetAnimations();
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             this.TestShot();
         }
@@ -137,5 +137,15 @@ public class PlayerController : MonoBehaviour
         ShotBullet();
     }
 
+    public void PlayerDied()
+    {
+        this.rigidBody.velocity = Vector3.zero;
+        this.rigidBody.angularVelocity = Vector3.zero;
+        this.rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+            
+        this.animator.SetTrigger(CommonVariables.PLAYER_DIE);
+    }
+
+    public void DisableControls() => this.IsControlEnabled = false;
     public PlayerProperties GetPlayerProperties() => this.playerProperties;
 }

@@ -42,6 +42,7 @@ public class EnemyWalk : EnemyCore, IState
             this.stateManager.ChangeState(this.stateManager.attackState);
             return;
         }
+        this.stateManager.transform.LookAt(target);
 
         this.navAgent.SetDestination(target.position);
     }

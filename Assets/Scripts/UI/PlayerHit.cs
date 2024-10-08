@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerHit : Panel
 {
     [SerializeField] private Image bgImage;
+    [SerializeField][Range(0F,1F)] private float alpha;
     private Color bgColor;
     private void Awake()
     {
@@ -17,11 +18,15 @@ public class PlayerHit : Panel
     public void Onhit()
     {
         this.gameObject.SetActive(true);
-        Color updateColor = new Color(bgColor.r, bgColor.g, bgColor.b,90F);
-        bgImage.DOColor(updateColor, .1F).OnComplete(() =>
+        Color updateColor = new Color(bgColor.r, bgColor.g, bgColor.b,alpha);
+        DOVirtual.Color(this.bgColor,updateColor,.1F ,(x) =>
+        {
+            bgImage.color = x;
+        }).OnComplete(() =>
         {
             bgImage.color = bgColor;
             this.gameObject.SetActive(false);
         });
+        
     }
 }

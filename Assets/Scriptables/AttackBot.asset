@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: AttackBot
   m_EditorClassIdentifier: 
   EnemyName: Attack Bot
-  MovingSpeed: 20
+  MovingSpeed: 8
   RotateSpeed: 15
   ChaseDistance: 10
-  ShootRange: 5
+  ShootRange: 4
   BulletMoveSpeed: 7
-  BulletDamage: 35
-  TimeOutPerShot: 0.5
-  MaxHealth: 200
+  BulletDamage: 20
+  KillScore: 100
+  TimeOutPerShot: 2
+  MaxHealth: 80
   ProjectileIndex: 1

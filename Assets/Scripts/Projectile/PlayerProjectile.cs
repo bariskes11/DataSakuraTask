@@ -5,18 +5,25 @@ using UnityEngine;
 
 public class PlayerProjectile : BaseProjectile
 {
-    
+    private bool isTriggered = false;
     private void Awake()
     {
         this.bulletType = CommonVariables.BulletTypes.PlayerBullet;
     }
-    
 
-     void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
+        this.isTriggered = false;
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(this.isTriggered) return;
         
         if (other.TryGetComponent(out IEnemy hitEnemy))
         {
+            this.isTriggered = true;
             hitEnemy.TakeDamage(bulletDamage);
         }
     }

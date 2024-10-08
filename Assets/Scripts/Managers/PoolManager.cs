@@ -6,7 +6,7 @@ using UnityEngine;
 public class PoolManager : SingletonCreator<PoolManager>
 {
     [SerializeField] private List<BaseProjectileSpawner> baseProjectileSpawner;
-    [SerializeField] private List<BaseHitParticleSpawner> hitParticleSpawners;
+    [SerializeField] private List<EnemySpawner> enemySpawners;
 
     private void Start()
     {
@@ -23,16 +23,13 @@ public class PoolManager : SingletonCreator<PoolManager>
         return baseProjectile;
     }
 
-    public void ReturnBaseProjectile(BaseProjectile projectile, int targetIndex)
+    public EnemyStateManager SpawnEnemy(int targetIndex, Transform spawnPosition)
     {
-        baseProjectileSpawner[targetIndex].Release(projectile);
+        EnemyStateManager enemy = enemySpawners[targetIndex].Get();
+        enemy.gameObject.SetActive(true);
+        enemy.transform.position = spawnPosition.position;
+        return enemy;
     }
 
-    public BaseHitParticle SpawnHitProjectileParticle(  int particleIndex,Transform spawnPosition)
-    {
-        BaseHitParticle baseHitParticle = hitParticleSpawners[particleIndex].Get();
-        baseHitParticle.gameObject.SetActive(true);
-        baseHitParticle.transform.position = spawnPosition.position;
-        return baseHitParticle;
-    }
+  
 }
