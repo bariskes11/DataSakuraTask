@@ -13,7 +13,7 @@ public class BestScorePanel : Panel
     [SerializeField] private BeginGamePanel beginPanel;
     private GameData gameData;
 
-    private void Awake()
+    private void Start()
     {
         EventManager.OnEnemyKilled.AddListener(CheckAndUpdateScore);
     }
@@ -46,7 +46,7 @@ public class BestScorePanel : Panel
 
     private void CheckAndUpdateScore(IEnemy arg0)
     {
-        if (inGamePanel.CurrentScore > gameData.BestScore)
+         if (inGamePanel.CurrentScore > gameData.BestScore)
         {
             GameSaveSystem.Instance.SaveGameData(new GameData { BestScore = inGamePanel.CurrentScore });
         }
